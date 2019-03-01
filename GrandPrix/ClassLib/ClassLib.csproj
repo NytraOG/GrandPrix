@@ -42,9 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CarModel.cs" />
-    <Compile Include="Models\DriverModel.cs" />
-    <Compile Include="Models\TireModel.cs" />
+    <Compile Include="Models\Drivers\AggressiveDriver.cs" />
+    <Compile Include="Models\Drivers\DriverModel.cs" />
+    <Compile Include="Models\Drivers\EnduranceDriver.cs" />
+    <Compile Include="Models\Drivers\Interface\IDriverModel.cs" />
+    <Compile Include="Models\Tires\HardTire.cs" />
+    <Compile Include="Models\Tires\Interface\ITireModel.cs" />
+    <Compile Include="Models\Tires\TireModel.cs" />
+    <Compile Include="Models\Tires\UltrasoftTire.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
