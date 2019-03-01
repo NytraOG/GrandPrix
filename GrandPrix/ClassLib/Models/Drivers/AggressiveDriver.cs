@@ -8,7 +8,7 @@ namespace ClassLib.Models.Drivers
 {
     public class AggressiveDriver : DriverModel
     {
-        public AggressiveDriver()
+        public AggressiveDriver(string name, CarModel car) : base(name, car)
         {
             FuelConsumptionPerKm = 2.7;
         }

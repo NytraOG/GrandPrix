@@ -5,6 +5,12 @@ namespace ClassLib.Models.Drivers
 {
     public class DriverModel : IDriverModel
     {
+        public DriverModel(string name, CarModel car)
+        {
+            Name = name;
+            Car = car;
+        }
+
         public string Name { get; set; }
         public double TotalTime { get; set; }
         public CarModel Car { get; set; }
