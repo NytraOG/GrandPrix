@@ -6,9 +6,9 @@ namespace ClassLib.Models.Tires
     {
         public UltrasoftTire(double hardness, double grip) : base(hardness)
         {
-            Name = "Ultrasoft";
+            Name        = "Ultrasoft";
             Degradation = 100;
-            Grip = grip;
+            Grip        = grip;
         }
 
         public double Grip { get; set; }
@@ -24,8 +24,8 @@ namespace ClassLib.Models.Tires
         public override void ChangeTire(double hardness, double grip)
         {
             Degradation = 100;
-            Hardness = hardness;
-            Grip = grip;
+            Hardness    = hardness;
+            Grip        = grip;
         }
     }
 }

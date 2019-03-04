@@ -15,28 +15,29 @@ namespace ClassLib.Controllers
         private int lapsNumber;
         private int trackLength;
         private Weather weather;
-        List<IDriverModel> listofDrivers = new List<IDriverModel>();
+        private List<IDriverModel> listofDrivers;
 
         public RaceTower()
         {
             weather = Weather.Sunny;
+            listofDrivers = new List<IDriverModel>();
         }
 
         public void SetTrackInfo(int lapsNumber, int trackLength)
         {
-            this.lapsNumber = lapsNumber;
-            this.trackLength = trackLength;
+            this.lapsNumber     = lapsNumber;
+            this.trackLength    = trackLength;
         }
 
         public void RegisterDriver(List<string> commandArgs)
         {
-            var driverType = commandArgs[0];
-            var driverName = commandArgs[1];
-            var horsePower = Convert.ToInt32(commandArgs[2]);
-            var fuelAmount = Convert.ToDouble(commandArgs[3]);
-            var tireType = commandArgs[4];
-            var tireHardness = Convert.ToDouble(commandArgs[5]);
-            var tireGrip = Convert.ToDouble(commandArgs[6]);
+            var driverType      = commandArgs[0];
+            var driverName      = commandArgs[1];
+            var horsePower      = Convert.ToInt32(commandArgs[2]);
+            var fuelAmount      = Convert.ToDouble(commandArgs[3]);
+            var tireType        = commandArgs[4];
+            var tireHardness    = Convert.ToDouble(commandArgs[5]);
+            var tireGrip        = Convert.ToDouble(commandArgs[6]);
 
             switch (driverType)
             {
@@ -57,10 +58,10 @@ namespace ClassLib.Controllers
 
         public void DriverBoxes(List<string> commandArgs)
         {
-            var boxType = commandArgs[0];
-            var driverName = commandArgs[1];
+            var boxType         = commandArgs[0];
+            var driverName      = commandArgs[1];
 
-            var boxingDriver = listofDrivers.FirstOrDefault(x => x.Name == driverName);
+            var boxingDriver    = listofDrivers.FirstOrDefault(x => x.Name == driverName);
 
             if (boxingDriver != null)
             {
@@ -70,15 +71,15 @@ namespace ClassLib.Controllers
                 {
                     case Konstanten.BoxTypeRefuel:
                         {
-                            var fuelAmount = Convert.ToDouble(commandArgs[2]);
+                            var fuelAmount      = Convert.ToDouble(commandArgs[2]);
 
                             boxingDriver.Car.RefuelCar(fuelAmount);
                             break;
                         }
                     case Konstanten.BoxTypeChangeTires:
                         {
-                            var tireType = commandArgs[2];
-                            var tireHardness = Convert.ToDouble(commandArgs[3]);
+                            var tireType        = commandArgs[2];
+                            var tireHardness    = Convert.ToDouble(commandArgs[3]);
 
                             if (tireType == Konstanten.TireTypeHard)
                             {
@@ -86,7 +87,7 @@ namespace ClassLib.Controllers
                             }
                             else if (tireType == Konstanten.TireTypeUltrasoft)
                             {
-                                var tireGrip = Convert.ToDouble(commandArgs[4]);
+                                var tireGrip    = Convert.ToDouble(commandArgs[4]);
 
                                 boxingDriver.Car.Tire.ChangeTire(tireHardness, tireGrip);
                             }
@@ -121,9 +122,9 @@ namespace ClassLib.Controllers
 
         public string GetLeaderboard()
         {
-            int driverPosition = 1;
-            string leaderBoard = string.Empty;
-            var orderedListOfDrivers = listofDrivers.OrderBy(totalTime => totalTime);
+            int driverPosition          = 1;
+            string leaderBoard          = string.Empty;
+            var orderedListOfDrivers    = listofDrivers.OrderBy(totalTime => totalTime);
 
             foreach (var driver in orderedListOfDrivers)
             {

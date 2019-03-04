@@ -8,7 +8,7 @@ namespace ClassLib.Models.Tires
         public TireModel(double hardness)
         {
             Degradation = 100;
-            Hardness = hardness;
+            Hardness    = hardness;
         }
 
         public string Name { get; set; }

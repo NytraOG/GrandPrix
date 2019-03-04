@@ -6,14 +6,14 @@ namespace ClassLib.Models.Tires
     {
         public HardTire(double hardness) : base(hardness)
         {
-            Name = "Hard";
+            Name        = "Hard";
             Degradation = 100;
         }
 
         public override void ChangeTire(double hardness, double grip)
         {
             Degradation = 100;
-            Hardness = hardness;
+            Hardness    = hardness;
         }
     }
 }

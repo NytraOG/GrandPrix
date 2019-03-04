@@ -7,8 +7,8 @@ namespace ClassLib.Models.Drivers
     {
         public DriverModel(string name, CarModel car)
         {
-            Name = name;
-            Car = car;
+            Name    = name;
+            Car     = car;
         }
 
         public string Name { get; set; }
