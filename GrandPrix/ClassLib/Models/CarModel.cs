@@ -10,9 +10,10 @@ namespace ClassLib.Models
 {
     public class CarModel
     {
-        public CarModel()
+        public CarModel(ITireModel tire)
         {
             FuelAmount = 160;
+            Tire = tire;
         }
 
         public int HorsePower { get; set; }
