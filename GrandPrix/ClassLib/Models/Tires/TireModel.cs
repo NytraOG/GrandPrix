@@ -22,5 +22,7 @@ namespace ClassLib.Models.Tires
             if (Degradation <= 0)
                 throw new Exception("Tire blew up, too bad! :C");
         }
+
+        public virtual void ChangeTire(double hardness, double grip) { }
     }
 }

@@ -20,5 +20,12 @@ namespace ClassLib.Models.Tires
             if(Degradation <= 30)
                 throw new Exception("Tire blew up, too bad! :C");
         }
+
+        public override void ChangeTire(double hardness, double grip)
+        {
+            Degradation = 100;
+            Hardness = hardness;
+            Grip = grip;
+        }
     }
 }

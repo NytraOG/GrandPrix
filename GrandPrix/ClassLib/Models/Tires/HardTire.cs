@@ -9,5 +9,11 @@ namespace ClassLib.Models.Tires
             Name = "Hard";
             Degradation = 100;
         }
+
+        public override void ChangeTire(double hardness, double grip)
+        {
+            Degradation = 100;
+            Hardness = hardness;
+        }
     }
 }

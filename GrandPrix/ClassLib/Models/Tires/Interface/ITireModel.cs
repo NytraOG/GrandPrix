@@ -7,5 +7,6 @@
         string Name { get; set; }
 
         void DegradeTire();
+        void ChangeTire(double hardness, double grip);
     }
 }
