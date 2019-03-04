@@ -5,10 +5,9 @@ namespace ClassLib.Models.Tires
 {
     public class TireModel : ITireModel
     {
-        public TireModel(string name, double hardness)
+        public TireModel(double hardness)
         {
             Degradation = 100;
-            Name = name;
             Hardness = hardness;
         }
 

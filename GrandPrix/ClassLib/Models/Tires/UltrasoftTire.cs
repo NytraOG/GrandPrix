@@ -4,7 +4,7 @@ namespace ClassLib.Models.Tires
 {
     public class UltrasoftTire : TireModel
     {
-        public UltrasoftTire(string name, double hardness, double grip) : base(name, hardness)
+        public UltrasoftTire(double hardness, double grip) : base(hardness)
         {
             Name = "Ultrasoft";
             Degradation = 100;

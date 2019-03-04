@@ -24,16 +24,31 @@ namespace ClassLib.Controllers
         {
             //TODO: ultrasoft implementation(grip), driver type, horsePower, fuel
 
-            var driverName = commandArgs[0];
-            var tireName = commandArgs[1];
-            var tireHardness = Convert.ToDouble(commandArgs[2]);
+            var driverType = commandArgs[0];
+            var driverName = commandArgs[1];
+            var horsePower = commandArgs[2];
+            var fuelAmount = commandArgs[3];
+            var tireType = commandArgs[4];
+            var tireHardness = Convert.ToDouble(commandArgs[5]);
+            var tireGrip = Convert.ToDouble(commandArgs[6]);
+
+            if (driverType == Konstantensammlung.driverTypeAggressive && tireType == Konstantensammlung.tireTypeHard)
+            {
+                listofDrivers.Add(
+                    new AggressiveDriver(
+                        driverName,
+                        new CarModel(
+                            new HardTire(
+                                tireHardness,
+                                tireGrip))));
+            }
 
             listofDrivers.Add(
                 new DriverModel(
-                    driverName, 
+                    driverName,
                     new CarModel(
                         new TireModel(
-                            tireName, 
+                            tireName,
                             tireHardness))));
         }
 

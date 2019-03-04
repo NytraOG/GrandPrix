@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Controllers\RaceTower.cs" />
     <Compile Include="enum\Weather.cs" />
+    <Compile Include="Konstantensammlung.cs" />
     <Compile Include="Models\CarModel.cs" />
     <Compile Include="Models\Drivers\AggressiveDriver.cs" />
     <Compile Include="Models\Drivers\DriverModel.cs" />

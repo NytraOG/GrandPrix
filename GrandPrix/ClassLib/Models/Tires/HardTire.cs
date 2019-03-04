@@ -4,12 +4,10 @@ namespace ClassLib.Models.Tires
 {
     public class HardTire : TireModel
     {
-        public HardTire(string name, double hardness, double grip) : base(name, hardness)
+        public HardTire(double hardness) : base(hardness)
         {
             Name = "Hard";
             Degradation = 100;
-            Grip = grip;
         }
-        public double Grip { get; set; }
     }
 }
