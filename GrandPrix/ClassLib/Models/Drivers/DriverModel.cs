@@ -17,9 +17,10 @@ namespace ClassLib.Models.Drivers
         public double FuelConsumptionPerKm { get; set; }
         public double Speed { get; set; }
 
-        public virtual void CalculateSpeed()
+        public virtual double CalculateAndSetSpeed()
         {
             Speed = (Car.HorsePower + Car.Tire.Degradation) / Car.FuelAmount;
+            return Speed;
         }
     }
 }

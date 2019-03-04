@@ -8,6 +8,6 @@
         double Speed { get; set; }
         double TotalTime { get; set; }
 
-        void CalculateSpeed();
+        double CalculateAndSetSpeed();
     }
 }
