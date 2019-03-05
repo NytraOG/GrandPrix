@@ -4,7 +4,7 @@
     {
         double Degradation { get; set; }
         double Hardness { get; set; }
-        string Name { get; set; }
+        string Type { get; set; }
 
         void DegradeTire();
         void ChangeTire(double hardness, double grip);

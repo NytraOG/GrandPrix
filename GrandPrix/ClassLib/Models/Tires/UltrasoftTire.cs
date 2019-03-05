@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace ClassLib.Models.Tires
 {
@@ -6,7 +7,7 @@ namespace ClassLib.Models.Tires
     {
         public UltrasoftTire(double hardness, double grip) : base(hardness)
         {
-            Name        = "Ultrasoft";
+            Type        = "ultrasoft";
             Degradation = 100;
             Grip        = grip;
         }
@@ -18,7 +19,7 @@ namespace ClassLib.Models.Tires
             Degradation -= (Grip + Hardness);
 
             if(Degradation <= 30)
-                throw new Exception("Tire blew up, too bad! :C");
+                throw new DataException("Tire blew up, too bad! :C");
         }
 
         public override void ChangeTire(double hardness, double grip)

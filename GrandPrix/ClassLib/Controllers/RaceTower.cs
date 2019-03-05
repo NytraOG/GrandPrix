@@ -31,14 +31,14 @@ namespace ClassLib.Controllers
 
         public void RegisterDriver(List<string> commandArgs)
         {
-            var driverType      = commandArgs[0];
-            var driverName      = commandArgs[1];
+            var driverType      = commandArgs[0].ToLower();
+            var driverName      = commandArgs[1].ToLower();
             var horsePower      = Convert.ToInt32(commandArgs[2]);
             var fuelAmount      = Convert.ToDouble(commandArgs[3]);
-            var tireType        = commandArgs[4];
+            var tireType        = commandArgs[4].ToLower();
             var tireHardness    = Convert.ToDouble(commandArgs[5]);
-            var tireGrip        = Convert.ToDouble(commandArgs[6]);
-
+            var tireGrip        = Convert.ToDouble(commandArgs[6]);     //TODO: IndexOutOfRange fixen für hard tires
+            
             switch (driverType)
             {
                 case Konstanten.DriverTypeAggressive when tireType == Konstanten.TireTypeHard:
@@ -113,6 +113,8 @@ namespace ClassLib.Controllers
                     driver.Car.ConsumeFuel(trackLength * driver.FuelConsumptionPerKm);
                     driver.Car.Tire.DegradeTire();
                 }
+
+                //TODO: overtaking
             }
 
             lapsNumber -= numberOfLapsToComplete;

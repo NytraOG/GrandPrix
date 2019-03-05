@@ -6,7 +6,7 @@ namespace ClassLib.Models.Tires
     {
         public HardTire(double hardness) : base(hardness)
         {
-            Name        = "Hard";
+            Type        = "hard";
             Degradation = 100;
         }
 

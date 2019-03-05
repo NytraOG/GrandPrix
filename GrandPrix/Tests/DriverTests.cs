@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,25 +16,48 @@ namespace Tests
     public class DriverTests
     {
         private RaceTower raceTower;
-        private List<string> mockList;
+        private List<string> inputAggressiveDriverSoftTires;
+        private List<string> inputEnduranceDriverSoftTires;
+        private List<string> inputTooMuchFuelDriverSoftTires;
 
-         [TestInitialize]
+        [TestInitialize]
         public void Init()
         {
             raceTower = new RaceTower();
-            mockList = new List<string> { "Bob", "awesomeTire-1000", "10" };
+            raceTower.SetTrackInfo(10, 20);
+            inputAggressiveDriverSoftTires = new List<string> { "Aggressive", "Bob", "500", "160", "Ultrasoft", "5", "5" };
+            inputEnduranceDriverSoftTires = new List<string> { "Endurance", "Bob", "500", "160", "Ultrasoft", "10", "10" };
+            inputTooMuchFuelDriverSoftTires = new List<string> { "Endurance", "Bob", "500", "5000", "Ultrasoft", "5", "5" };
         }
 
         [TestMethod]
-        public void Should_Create_Driver_With_Correct_Properties()
+        public void Should_Create_Driver_With_Correct_Properties_Soft_Tires()
         {
             // Arrange & Act 
-            raceTower.RegisterDriver(mockList);
+            raceTower.RegisterDriver(inputAggressiveDriverSoftTires);
 
             // Assert
-            Assert.AreEqual(mockList[0], raceTower.GetDriverInfo()[0].Name);
-            Assert.AreEqual(mockList[1], raceTower.GetDriverInfo()[0].Car.Tire.Name);
-            Assert.AreEqual(Convert.ToDouble(mockList[2]), raceTower.GetDriverInfo()[0].Car.Tire.Hardness);
+            Assert.AreEqual(inputAggressiveDriverSoftTires[1].ToLower(), raceTower.GetDriverInfo()[0].Name);
+            Assert.AreEqual(inputAggressiveDriverSoftTires[4].ToLower(), raceTower.GetDriverInfo()[0].Car.Tire.Type);
+            Assert.AreEqual(Convert.ToDouble(inputAggressiveDriverSoftTires[5]), raceTower.GetDriverInfo()[0].Car.Tire.Hardness);
+        }
+
+        [TestMethod]
+        public void Should_Throw_Exception_On_Degraded_Tire()
+        {
+            // Arrange
+            raceTower.RegisterDriver(inputEnduranceDriverSoftTires);
+            var lapInput = new List<string> { "7" };
+
+            // Act & Assert
+            Assert.ThrowsException<DataException>(() => raceTower.CompleteLaps(lapInput));
+        }
+
+        [TestMethod]
+        public void Should_Not_Allow_Creating_Car_With_Fuel_Over_160()
+        {
+            // Arrange & Act & Assert
+            Assert.ThrowsException<Exception>(() => raceTower.RegisterDriver(inputTooMuchFuelDriverSoftTires));
         }
     }
 }
