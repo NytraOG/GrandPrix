@@ -15,7 +15,7 @@ namespace ClassLib.Controllers
         private int lapsNumber;
         private int trackLength;
         private Weather weather;
-        private List<IDriverModel> listofDrivers;
+        private readonly List<IDriverModel> listofDrivers;
 
         public RaceTower()
         {

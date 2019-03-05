@@ -13,6 +13,6 @@ namespace ClassLib
         public const string TireTypeUltrasoft       = "ultrasoft";
         public const string TireTypeHard            = "hard";
         public const string BoxTypeRefuel           = "refuel";
-        public const string BoxTypeChangeTires      = "changeTires";
+        public const string BoxTypeChangeTires      = "changetires";
     }
 }

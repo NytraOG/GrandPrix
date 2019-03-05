@@ -1,6 +1,6 @@
 ﻿namespace ClassLib.@enum
 {
-    enum Weather
+    public enum Weather
     {
         Sunny,
         Rainy,
