@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using ClassLib.Models.Tires.Interface;
 
 namespace ClassLib.Models.Tires
@@ -12,8 +11,8 @@ namespace ClassLib.Models.Tires
             Hardness    = hardness;
         }
 
-        public string Type { get; set; }
-        public double Hardness { get; set; }
+        public string Type        { get; set; }
+        public double Hardness    { get; set; }
         public double Degradation { get; set; }
 
         public virtual void DegradeTire()
@@ -24,6 +23,8 @@ namespace ClassLib.Models.Tires
                 throw new DataException("Tire blew up, too bad! :C");
         }
 
-        public virtual void ChangeTire(double hardness, double grip) { }
+        public virtual void ChangeTire(double hardness, double grip)
+        {
+        }
     }
 }

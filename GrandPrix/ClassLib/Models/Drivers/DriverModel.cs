@@ -1,21 +1,18 @@
-﻿using ClassLib.Models.Tires;
-using ClassLib.Models.Tires.Interface;
-
-namespace ClassLib.Models.Drivers
+﻿namespace ClassLib.Models.Drivers
 {
     public class DriverModel : IDriverModel
     {
         public DriverModel(string name, CarModel car)
         {
-            Name    = name;
-            Car     = car;
+            Name = name;
+            Car  = car;
         }
 
-        public string Name { get; set; }
-        public double TotalTime { get; set; }
-        public CarModel Car { get; set; }
-        public double FuelConsumptionPerKm { get; set; }
-        public double Speed { get; set; }
+        public string   Name                 { get; set; }
+        public double   TotalTime            { get; set; }
+        public CarModel Car                  { get; set; }
+        public double   FuelConsumptionPerKm { get; set; }
+        public double   Speed                { get; set; }
 
         public virtual double CalculateAndSetSpeed()
         {

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClassLib.Models.Tires;
 using ClassLib.Models.Tires.Interface;
 
 namespace ClassLib.Models
@@ -15,10 +9,10 @@ namespace ClassLib.Models
 
         public CarModel(ITireModel tire, int horsePower, double fuelAmount)
         {
-            FuelAmount  = fuelAmount;
-            Tire        = tire;   
-            HorsePower  = horsePower;
-            FuelAmount  = fuelAmount;
+            FuelAmount = fuelAmount;
+            Tire       = tire;
+            HorsePower = horsePower;
+            FuelAmount = fuelAmount;
         }
 
         public int HorsePower { get; set; }
@@ -28,10 +22,7 @@ namespace ClassLib.Models
             get => fuelAmount;
             set
             {
-                if (value > 160)
-                {
-                    throw new Exception("Maximum fuel capacity is 160!");
-                }
+                if (value > 160) throw new Exception("Maximum fuel capacity is 160!");
 
                 fuelAmount = value;
             }

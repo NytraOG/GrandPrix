@@ -1,6 +1,4 @@
-﻿using ClassLib.Models.Tires.Interface;
-
-namespace ClassLib.Models.Tires
+﻿namespace ClassLib.Models.Tires
 {
     public class HardTire : TireModel
     {

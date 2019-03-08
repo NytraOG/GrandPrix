@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 
 namespace ClassLib.Models.Tires
 {
@@ -16,9 +15,9 @@ namespace ClassLib.Models.Tires
 
         public override void DegradeTire()
         {
-            Degradation -= (Grip + Hardness);
+            Degradation -= Grip + Hardness;
 
-            if(Degradation <= 30)
+            if (Degradation <= 30)
                 throw new DataException("Tire blew up, too bad! :C");
         }
 

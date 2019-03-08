@@ -11,7 +11,7 @@ namespace Tests
     {
         private List<string> aggressiveDriverSoftTires;
         private List<string> fastDegradationEnduranceDriverSoftTires;
-        private RaceTower raceTower;
+        private RaceTower    raceTower;
         private List<string> tooMuchFuelDriverSoftTires;
 
         [TestInitialize]
@@ -20,10 +20,10 @@ namespace Tests
             raceTower = new RaceTower();
             raceTower.SetTrackInfo(10, 20);
 
-            aggressiveDriverSoftTires = new List<string> { "Aggressive", "Bob", "500", "160", "Ultrasoft", "5", "5" };
+            aggressiveDriverSoftTires = new List<string> {"Aggressive", "Bob", "500", "160", "Ultrasoft", "5", "5"};
             fastDegradationEnduranceDriverSoftTires = new List<string>
                                                       {"Endurance", "Bob", "500", "160", "Ultrasoft", "10", "10"};
-            tooMuchFuelDriverSoftTires = new List<string> { "Endurance", "Bob", "500", "5000", "Ultrasoft", "5", "5" };
+            tooMuchFuelDriverSoftTires = new List<string> {"Endurance", "Bob", "500", "5000", "Ultrasoft", "5", "5"};
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace Tests
         {
             // Arrange
             raceTower.RegisterDriver(fastDegradationEnduranceDriverSoftTires);
-            var lapInput = new List<string> { "7" };
+            var lapInput = new List<string> {"7"};
 
             // Act & Assert
             Assert.ThrowsException<DataException>(() => raceTower.CompleteLaps(lapInput));
@@ -60,16 +60,16 @@ namespace Tests
         [TestMethod]
         [DataRow("changetires", "bob", "ultrasoft", "1", "1")]
         [DataRow("changetires", "bob", "hard", "1", "1")]
-        public void Should_Restore_Tire_Degradation_After_Boxing(string boxType, string driverName, string tireType,
-            string hardness, string grip)
+        public void Should_Restore_Tire_Degradation_After_Boxing(string boxType,  string driverName, string tireType,
+            string                                                      hardness, string grip)
         {
             // Arrange
             raceTower.RegisterDriver(aggressiveDriverSoftTires);
-            raceTower.CompleteLaps(new List<string> { "2" });
+            raceTower.CompleteLaps(new List<string> {"2"});
             var expectedDegradation = 100;
 
             // Act
-            raceTower.DriverBoxes(new List<string> { boxType, driverName, tireType, hardness, grip });
+            raceTower.DriverBoxes(new List<string> {boxType, driverName, tireType, hardness, grip});
 
             // Assert
             Assert.AreEqual(expectedDegradation, raceTower.GetDriverInfo()[0].Car.Tire.Degradation);
@@ -79,7 +79,7 @@ namespace Tests
         public void Should_Throw_Exception_If_Too_many_Laps_Must_Be_Completed()
         {
             // Assert & Arrange & Act
-            Assert.ThrowsException<Exception>(() => raceTower.CompleteLaps(new List<string> { "50" }));
+            Assert.ThrowsException<Exception>(() => raceTower.CompleteLaps(new List<string> {"50"}));
         }
 
         [TestMethod]
@@ -88,28 +88,28 @@ namespace Tests
         {
             // Arrange
             raceTower.RegisterDriver(aggressiveDriverSoftTires);
-            raceTower.CompleteLaps(new List<string> { "2" });
+            raceTower.CompleteLaps(new List<string> {"2"});
             var expectedFuelAfterBoxing = 102;
 
             // Act
-            raceTower.DriverBoxes(new List<string> { boxType, driverName, fuelAmount });
+            raceTower.DriverBoxes(new List<string> {boxType, driverName, fuelAmount});
 
             // Assert
             Assert.AreEqual(expectedFuelAfterBoxing, raceTower.GetDriverInfo()[0].Car.FuelAmount);
-            }
+        }
 
         [TestMethod]
         [DataRow("refuel", "bob", "500")]
         public void Should_Refuel_Car_Properly_After_Boxing_Too_Much_Fuel(string boxType, string driverName,
-            string fuelAmount)
+            string                                                               fuelAmount)
         {
             // Arrange
             raceTower.RegisterDriver(aggressiveDriverSoftTires);
-            raceTower.CompleteLaps(new List<string> { "2" });
+            raceTower.CompleteLaps(new List<string> {"2"});
             var expectedFuelAfterBoxingIfTooMuchInput = 160;
 
             // Act
-            raceTower.DriverBoxes(new List<string> { boxType, driverName, fuelAmount });
+            raceTower.DriverBoxes(new List<string> {boxType, driverName, fuelAmount});
 
             // Assert
             Assert.AreEqual(expectedFuelAfterBoxingIfTooMuchInput, raceTower.GetDriverInfo()[0].Car.FuelAmount);
