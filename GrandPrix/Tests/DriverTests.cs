@@ -13,6 +13,7 @@ namespace Tests
         private List<string> fastDegradationEnduranceDriverSoftTires;
         private RaceTower    raceTower;
         private List<string> tooMuchFuelDriverSoftTires;
+        private List<string> enduranceDriverHardTires;
 
         [TestInitialize]
         public void Init()
@@ -21,11 +22,23 @@ namespace Tests
             raceTower.SetTrackInfo(10, 20);
 
             aggressiveDriverSoftTires = new List<string> {"Aggressive", "Bob", "500", "160", "Ultrasoft", "5", "5"};
-            fastDegradationEnduranceDriverSoftTires = new List<string>
-                                                      {"Endurance", "Bob", "500", "160", "Ultrasoft", "10", "10"};
+            enduranceDriverHardTires = new List<string> {"Endurance", "Bob", "500", "150", "Ultrasoft", "5", "5"};
             tooMuchFuelDriverSoftTires = new List<string> {"Endurance", "Bob", "500", "5000", "Ultrasoft", "5", "5"};
+            fastDegradationEnduranceDriverSoftTires = new List<string> {"Endurance", "Bob", "500", "160", "Ultrasoft", "10", "10"};
         }
 
+        [TestMethod]
+        public void Should_Create_Driver_With_Correct_Properties_Hard_Tires()
+        {
+            // Arrange & Act
+            raceTower.RegisterDriver(enduranceDriverHardTires);
+            
+            // Assert
+            Assert.AreEqual(enduranceDriverHardTires[1].ToLower(), raceTower.GetDriverInfo()[0].Name);
+            Assert.AreEqual(enduranceDriverHardTires[4].ToLower(), raceTower.GetDriverInfo()[0].Car.Tire.Type);
+            Assert.AreEqual(Convert.ToDouble(enduranceDriverHardTires[5]), raceTower.GetDriverInfo()[0].Car.Tire.Hardness);
+        }
+        
         [TestMethod]
         public void Should_Create_Driver_With_Correct_Properties_Soft_Tires()
         {

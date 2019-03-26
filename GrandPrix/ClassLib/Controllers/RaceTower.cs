@@ -112,6 +112,7 @@ namespace ClassLib.Controllers
                 throw new Exception($"Impossible to drive this many Laps. There are {lapsNumber} Laps left.");
 
             for (var i = 1; i <= numberOfLapsToComplete; i++)
+            {
                 foreach (var driver in listofDrivers)
                 {
                     driver.TotalTime += 60 / (trackLength / driver.CalculateAndSetSpeed());
@@ -119,7 +120,9 @@ namespace ClassLib.Controllers
                     driver.Car.Tire.DegradeTire();
                 }
 
-            //TODO: overtaking
+                //TODO: Point of overtake check/logic
+            }
+
 
             lapsNumber -= numberOfLapsToComplete;
 
