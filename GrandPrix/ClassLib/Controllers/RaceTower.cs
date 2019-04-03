@@ -122,8 +122,7 @@ namespace ClassLib.Controllers
 
                 //TODO: Point of overtake check/logic
             }
-
-
+            
             lapsNumber -= numberOfLapsToComplete;
 
             return "";
@@ -159,6 +158,10 @@ namespace ClassLib.Controllers
                     break;
                 case "foggy":
                     weather = Weather.Foggy;
+                    break;
+                default:
+                    Console.WriteLine("Input not in an understandable format! \n Setting weather to default: Sunny");
+                    weather = Weather.Sunny;
                     break;
             }
         }
