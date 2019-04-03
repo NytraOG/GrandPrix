@@ -133,7 +133,7 @@ namespace ClassLib.Controllers
         {
             var driverPosition       = 1;
             var leaderBoard          = string.Empty;
-            var orderedListOfDrivers = listofDrivers.OrderBy(totalTime => totalTime);
+            var orderedListOfDrivers = listofDrivers.OrderBy(totalTime => totalTime); //TODO: funktioniert das überhaupt?
 
             foreach (var driver in orderedListOfDrivers)
             {
